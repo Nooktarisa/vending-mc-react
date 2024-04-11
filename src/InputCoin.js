@@ -1,30 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Row, Button } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCredit } from './actions';
+import { resetCoin } from './actions';
 
-function InputCoin({ coin, onCoinChanged }) {
-  const [total, setTotal] = useState(coin);
+const InputCoin = () => {
+  const dispatch = useDispatch();
+  const coin = useSelector(state => state.coin || 0);
 
-  useEffect(() => {
-    setTotal(coin);
-  }, [coin]);
-
-  const onItemClick = value => {
-    const newTotal = total + value;
-    setTotal(newTotal);
-    onCoinChanged(newTotal);
+  const handleAddCredit = (amount) => {
+    dispatch(addCredit(amount));
   };
+
   const onCancel = () => {
-    const newTotal = 0;
-    setTotal(newTotal);
-    onCoinChanged(newTotal);
+    dispatch(resetCoin());
   };
   return (
     <div className="App">
       <div className="balance">Balance: ${coin}</div>
       <div className="add-balance">
-        <Button onClick={() => { onItemClick(5); }}>Add $5</Button>
-        <Button onClick={() => { onItemClick(10); }}>Add $10</Button>
-        <Button onClick={() => { onItemClick(10); }}>Add $15</Button>
+        <Button onClick={() => { handleAddCredit(5); }}>Add $5</Button>
+        <Button onClick={() => { handleAddCredit(10); }}>Add $10</Button>
+        <Button onClick={() => { handleAddCredit(10); }}>Add $15</Button>
 
         <Row style={{ marginTop: 16 }} justify="center">
           <Button className="button-style-cancel" type="primary" danger onClick={onCancel}>Cancel</Button>

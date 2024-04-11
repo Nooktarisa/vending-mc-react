@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import { Row, Col, Card, Button } from "antd";
 import { products } from "./data";
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { resetCoin } from './actions';
 
 const emptySlotImgUrl =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcrXJ2lhd_CLrStSEV7-Yt8yG7Flv7bSM9Bp5rvsc2k0-Iz__wPZ_VhEh87OL4Ezu_jjA&usqp=CAU";
 
-function Machine({ coin, onResetCoin }) {
+const Machine = () => {
+  const dispatch = useDispatch();
   const [productList] = useState(products);
-
+  const coin = useSelector(state => state.coin || 0); 
   const handlePurchase = (price) => {
     if (coin >= price) {
-      alert('Product purchased successfully!');
-      const newCoin = coin - price;
-      onResetCoin(newCoin);
+      const updatedCoin = coin - price;
+      dispatch({ type: 'RESET_COIN', payload: updatedCoin });
+      alert(`Product purchased successfully! \n Refund : $${updatedCoin} `);
     } else {
       alert('Insufficient balance to purchase this product.');
     }

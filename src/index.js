@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import Machine from "./Machine";
 import InputCoin from "./InputCoin";
+import { Provider } from 'react-redux';
+import store from './store';
 
 function App() {
   const initialCoin = 0;
@@ -18,8 +20,10 @@ function App() {
 
   return (
     <div>
-      <Machine coin={coin} onResetCoin={onResetCoin}/>
-      <InputCoin coin={coin} onCoinChanged={onCoinChanged}/>
+      <Provider store={store}>
+        <Machine coin={coin} onResetCoin={onResetCoin} />
+        <InputCoin coin={coin} onCoinChanged={onCoinChanged} />
+      </Provider>
     </div>
   );
 }
