@@ -1,0 +1,69 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.available {
+    padding: '5px';
+    border-radius: '3px';
+}
+
+.button-style {
+    border-radius: 8px;
+    color: #FFFFFF;
+    min-width: 100px;
+
+    &.primary {
+        background: #0F5591;
+        border-color: #0F5591;
+
+        &:hover {
+            border-color: #2981CC;
+            color: #FFFFFF !important;
+        }
+
+        &.outline {
+            background: #FFFFFF;
+            color: #0F5591 !important;
+        }
+    }
+}
+
+.button-style-cancel {
+    border-radius: 8px;
+    min-width: 200px;
+    margin: 0px 13px 0 17px;
+
+    &.primary {
+        background: #EE4854;
+        border-color: #EE4854;
+
+        &:hover {
+            border-color: #EE4854 !important;
+            color: #FFFFFF !important;
+        }
+
+        &.outline {
+            background: #FFFFFF;
+            color: #EE4854 !important;
+        }
+    }
+}
+
+.row-style {
+    margin-bottom: 10px;
+}
+
+.total-style {
+    font-size: 1.5em;
+    margin: 25px 15px 0 15px;
+    padding: 5px;
+    text-align: center;
+    /* background-color: LIMEGREEN;
+    color: white; */
+    width: 200px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
