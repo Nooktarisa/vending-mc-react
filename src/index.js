@@ -1,30 +1,25 @@
+import "./styles.css";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-
-import "./styles.css";
-
 import Machine from "./Machine";
 import InputCoin from "./InputCoin";
-import { Col, Row } from "antd";
 
 function App() {
+  const initialCoin = 0;
   const [coin, setCoin] = useState(0);
   const onCoinChanged = total => {
     setCoin(total);
   };
-  const onPrice = price => {
-    setCoin(coin - price);
+
+  const onResetCoin = (newCoin) => {
+    if (newCoin < initialCoin) newCoin = initialCoin;
+    setCoin(newCoin);
   };
+
   return (
     <div>
-      <Row>
-        <Col span={8}>
-          <Machine coin={coin} onPrice={onPrice} />
-        </Col>
-        <Col span={16}>
-          <InputCoin coin={coin} onCoinChanged={onCoinChanged} />
-        </Col>
-      </Row>
+      <Machine coin={coin} onResetCoin={onResetCoin}/>
+      <InputCoin coin={coin} onCoinChanged={onCoinChanged}/>
     </div>
   );
 }
