@@ -3,7 +3,6 @@ import { Row, Col, Card, Button } from "antd";
 import { products } from "./data";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { resetCoin } from './actions';
 
 const emptySlotImgUrl =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcrXJ2lhd_CLrStSEV7-Yt8yG7Flv7bSM9Bp5rvsc2k0-Iz__wPZ_VhEh87OL4Ezu_jjA&usqp=CAU";

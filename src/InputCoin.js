@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Row, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCredit } from './actions';
